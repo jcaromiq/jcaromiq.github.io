@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mi Cuaderno de bitácora</title>
+    <link>http://blog.joaquin-caro.es/</link>
+    <description>Recent content on Mi Cuaderno de bitácora</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-ES</language>
+    <copyright>© Cuaderno de bitácora - Template: @mdo, ported to Hugo by @mralanorth.</copyright>
+    <lastBuildDate>Sun, 20 Aug 2017 23:19:03 +0200</lastBuildDate>
+    
+	<atom:link href="http://blog.joaquin-caro.es/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Bienvenid@s!</title>
+      <link>http://blog.joaquin-caro.es/2017/08/bienvenids/</link>
+      <pubDate>Sun, 20 Aug 2017 23:19:03 +0200</pubDate>
+      
+      <guid>http://blog.joaquin-caro.es/2017/08/bienvenids/</guid>
+      <description>&lt;p&gt;Primero de todo bienvenid@ a mi blog! ¿por qué se llama cuaderno de bitácora? porque en el voy a ir recogiendo todo lo que vaya aprendiendo en mi día a día en este gran oficio que es el desarrollo de software.
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
