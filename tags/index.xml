@@ -7,9 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>es-ES</language>
     <copyright>© Cuaderno de bitácora - Template: @mdo, ported to Hugo by @mralanorth.</copyright>
+    <lastBuildDate>Mon, 21 Aug 2017 01:05:31 +0200</lastBuildDate>
     
 	<atom:link href="http://blog.joaquin-caro.es/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Functional Programming</title>
+      <link>http://blog.joaquin-caro.es/tags/functional-programming/</link>
+      <pubDate>Mon, 21 Aug 2017 01:05:31 +0200</pubDate>
+      
+      <guid>http://blog.joaquin-caro.es/tags/functional-programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>http://blog.joaquin-caro.es/tags/java/</link>
+      <pubDate>Mon, 21 Aug 2017 01:05:31 +0200</pubDate>
+      
+      <guid>http://blog.joaquin-caro.es/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vavr</title>
+      <link>http://blog.joaquin-caro.es/tags/vavr/</link>
+      <pubDate>Mon, 21 Aug 2017 01:05:31 +0200</pubDate>
+      
+      <guid>http://blog.joaquin-caro.es/tags/vavr/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
