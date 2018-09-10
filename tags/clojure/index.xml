@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Clojure on Cuaderno de bitácora</title>
+    <link>http://blog.joaquin-caro.es/tags/clojure/</link>
+    <description>Recent content in Clojure on Cuaderno de bitácora</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-ES</language>
+    <copyright>© Cuaderno de bitácora - Template: @mdo, ported to Hugo by @mralanorth.</copyright>
+    
+	<atom:link href="http://blog.joaquin-caro.es/tags/clojure/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Funciones como ciudadanos de primera clase</title>
+      <link>http://blog.joaquin-caro.es/1/01/funciones-como-ciudadanos-de-primera-clase/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.joaquin-caro.es/1/01/funciones-como-ciudadanos-de-primera-clase/</guid>
+      <description>&lt;p&gt;Una de las conceptos de la programación funcional es que las funciones son tratadas como &amp;ldquo;ciudadanos de primera clase&amp;rdquo;, esto quiere decir que son tratadas como el resto de las variables, objectos. Se pueden asignar a una variable, pueden pasarse como argumento, incluso, una funcion puede devolver otra funcion.&lt;/p&gt;
+
+&lt;p&gt;en este articulo vamos a ver diferentes implementaciones en lenguajes de la jvm tan dispares como java, Kotlin o Clojure&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

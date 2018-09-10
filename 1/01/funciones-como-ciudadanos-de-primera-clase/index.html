@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<meta name="generator" content="Hugo 0.44" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+		<title>Funciones como ciudadanos de primera clase &middot; Cuaderno de bitácora</title>
+
+		<link rel="stylesheet" href="http://blog.joaquin-caro.es/css/reset.css">
+		<link rel="stylesheet" href="http://blog.joaquin-caro.es/css/text.css">
+		<link rel="shortcut icon" href="http://blog.joaquin-caro.es/favicon.ico">
+		<link rel="icon" type="image/png" href="http://blog.joaquin-caro.es/favicon-192.png" sizes="192x192">
+		<link rel="apple-touch-icon" sizes="180x180" href="http://blog.joaquin-caro.es/favicon-180.png">
+		<link href="" rel="alternate" type="application/rss+xml" title="Cuaderno de bitácora" />
+		
+
+
+	<body>
+		<header>
+	<h1>
+		<a href="http://blog.joaquin-caro.es/./">
+			
+			Cuaderno de bitácora
+			
+		</a>
+	</h1>
+	
+
+
+		</header>
+
+		<nav>
+<ul>
+	
+</ul>
+
+
+		</nav>
+
+
+		<main class="single">
+
+
+
+			<article id="funciones-como-ciudadanos-de-primera-clase" class="mode-full">
+				<header>
+					<h1>Funciones como ciudadanos de primera clase</h1>
+			<p>
+				
+
+				<span class='article-length'>400 words</span>
+				<span class='article-reading-time'>2 minutes</span>
+
+
+
+
+</p>
+
+				</header>
+
+				
+				<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#java">Java</a>
+<ul>
+<li><a href="#ejemplos">Ejemplos</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+				
+
+
+				<main>
+					
+						<p>Una de las conceptos de la programación funcional es que las funciones son tratadas como &ldquo;ciudadanos de primera clase&rdquo;, esto quiere decir que son tratadas como el resto de las variables, objectos. Se pueden asignar a una variable, pueden pasarse como argumento, incluso, una funcion puede devolver otra funcion.</p>
+
+<p>en este articulo vamos a ver diferentes implementaciones en lenguajes de la jvm tan dispares como java, Kotlin o Clojure</p>
+
+<p></p>
+
+<h2 id="java">Java</h2>
+
+<p>Hasta java 8 una funcion era de tercera clase, unicamente era posible definirla y llamarla.</p>
+
+<p>En java 8 se introdujo algo del paradigma funcional al lenguaje, haciendo que las funciones pasarán a ser ciudadanos de primera introduciendo las <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html">Interfaces Funcionales</a> de las cuales las básicas son:</p>
+
+<ul>
+<li>Consumer -&gt; Funcion que recibe un parametro y no devuelve nada</li>
+<li>Function -&gt; Funcion que recibe un parámetro y devuelve un resultado</li>
+<li>Supplier -&gt; Funcion que no recibe parametros y devuelve un resultado</li>
+<li>Predicado -&gt; Funcion recibe un parametro y devuelve un booleano.</li>
+</ul>
+
+<p>A partir de aquí, surgen diferentes combinaciones como los BiXXX que reciben dos parametros, o los XXToYY que transforman un tipo a otro o las especificaciones como IntConsumer/Supplier, LongConsumer/Supplier etc etc..</p>
+
+<p>Siendo el limite 2 argumentos como entrada a no ser que se usen librerias como <a href="https://apiumhub.com/tech-blog-barcelona/functional-java-with-vavr/">vavr</a> que permiten ampliar hasta 8</p>
+
+<h3 id="ejemplos">Ejemplos</h3>
+
+<pre><code class="language-java">// Asignar una funcion a una variable
+Function&lt;String, String&gt; applyFormat = (it) -&gt;
+	it.trim().replaceAll(&quot;_&quot;, &quot; &quot;).toLowerCase();
+
+String hello = applyFormat.apply(&quot;   Hello_World  &quot;);
+
+Assertions.assertThat(hello).isEqualTo(&quot;hello world&quot;);
+</code></pre>
+
+<p>El siguiente ejemplo es una posible implementacion del calculo de movimiento de la kata mars Rover, en la cual creariamos un map con la orientacion y la funcion a ejecutar en cada caso, ademas de que la funcion que se guarda esta parcialmente aplicada.</p>
+
+<pre><code class="language-java">Map&lt;Orientation, Function&lt;Point, Point&gt;&gt; gps = new HashMap&lt;&gt;();
+Function2&lt;Integer, Point, Point&gt; moveYBy = (i, p) -&gt; new Point(p.x, p.y + i);
+Function2&lt;Integer, Point, Point&gt; moveXBy = (i, p) -&gt; new Point(p.x + i, p.y);
+
+gps.put(Orientation.NORTH, moveYBy.apply(1));
+gps.put(Orientation.EAST, moveXBy.apply(1));
+gps.put(Orientation.SOUTH, moveYBy.apply(-1));
+gps.put(Orientation.WEST, moveXBy.apply(-1));
+
+....
+    
+Point point = gps.get(Orientation.EAST).apply(new Point(0, 0));
+
+Assertions.assertThat(point).isEqualTo(new Point(1, 0));
+</code></pre>
+
+<pre><code class="language-java">//Pasar una funcion como argumento
+
+</code></pre>
+					
+				</main>
+
+				<footer>
+					<p>
+						
+						
+					</p>
+				</footer>
+
+
+
+
+			</article>
+
+		</main>
+
+		<footer>
+	
+
+		</footer>
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-9545670-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+	</body>
+</html>
