@@ -3,23 +3,17 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://blog.joaquin-caro.es/2017/08/vitaminando-la-programacion-funcional-de-java-8-con-vavr/</loc>
+    <loc>http://blog.joaquin-caro.es/post/libreria_vavr.io/</loc>
     <lastmod>2017-08-21T01:05:31+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.joaquin-caro.es/2017/08/bienvenids/</loc>
+    <loc>http://blog.joaquin-caro.es/post/welcome/</loc>
     <lastmod>2017-08-20T23:19:03+02:00</lastmod>
   </url>
   
   <url>
     <loc>http://blog.joaquin-caro.es/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.joaquin-caro.es/</loc>
-    <lastmod>2017-08-21T01:05:31+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -43,6 +37,12 @@
   
   <url>
     <loc>http://blog.joaquin-caro.es/categories/java/</loc>
+    <lastmod>2017-08-21T01:05:31+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.joaquin-caro.es/</loc>
     <lastmod>2017-08-21T01:05:31+02:00</lastmod>
     <priority>0</priority>
   </url>

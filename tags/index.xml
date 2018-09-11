@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Cuaderno de bitácora</title>
+    <title>Tags on Joaquín Caro</title>
     <link>http://blog.joaquin-caro.es/tags/</link>
-    <description>Recent content in Tags on Cuaderno de bitácora</description>
+    <description>Recent content in Tags on Joaquín Caro</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-ES</language>
-    <copyright>© Cuaderno de bitácora - Template: @mdo, ported to Hugo by @mralanorth.</copyright>
     <lastBuildDate>Mon, 21 Aug 2017 01:05:31 +0200</lastBuildDate>
     
 	<atom:link href="http://blog.joaquin-caro.es/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Functional Programming</title>
+      <title>Functional programming</title>
       <link>http://blog.joaquin-caro.es/tags/functional-programming/</link>
       <pubDate>Mon, 21 Aug 2017 01:05:31 +0200</pubDate>
       

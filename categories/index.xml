@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Cuaderno de bitácora</title>
+    <title>Categories on Joaquín Caro</title>
     <link>http://blog.joaquin-caro.es/categories/</link>
-    <description>Recent content in Categories on Cuaderno de bitácora</description>
+    <description>Recent content in Categories on Joaquín Caro</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-ES</language>
-    <copyright>© Cuaderno de bitácora - Template: @mdo, ported to Hugo by @mralanorth.</copyright>
     
 	<atom:link href="http://blog.joaquin-caro.es/categories/index.xml" rel="self" type="application/rss+xml" />
     
