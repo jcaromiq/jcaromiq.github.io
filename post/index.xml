@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Joaquín Caro</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-ES</language>
-    <lastBuildDate>Mon, 21 Aug 2017 01:05:31 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 11 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://blog.joaquin-caro.es/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Automatizando la publicación de Hugo con GitLab CI</title>
+      <link>http://blog.joaquin-caro.es/post/hugo_automatizando_la_publicacion/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.joaquin-caro.es/post/hugo_automatizando_la_publicacion/</guid>
+      <description>Uno de los objetivos de tener este blog es poder tener un registro de todo lo que voy aprendiendo y poniendo en practica en mi día a día.
+Con el objetivo de darle un pequeño empujón al blog, apunté una lista de TODOs que podría aplicar para que me resultara más sencillo añadir contenido.
+A parte de tener algo que contar, que esto al fin y al cabo es lo más complicado, otra de las tareas que me salieron era mejorar el proceso de publicar los artículos.</description>
+    </item>
     
     <item>
       <title>Vitaminando la programación funcional en java 8 con Vavr</title>

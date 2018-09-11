@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Joaquín Caro</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-ES</language>
-    <lastBuildDate>Mon, 21 Aug 2017 01:05:31 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 11 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://blog.joaquin-caro.es/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CD</title>
+      <link>http://blog.joaquin-caro.es/tags/cd/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.joaquin-caro.es/tags/cd/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Functional programming</title>
@@ -17,6 +26,24 @@
       <pubDate>Mon, 21 Aug 2017 01:05:31 +0200</pubDate>
       
       <guid>http://blog.joaquin-caro.es/tags/functional-programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GitLab CI</title>
+      <link>http://blog.joaquin-caro.es/tags/gitlab-ci/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.joaquin-caro.es/tags/gitlab-ci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>http://blog.joaquin-caro.es/tags/hugo/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.joaquin-caro.es/tags/hugo/</guid>
       <description></description>
     </item>
     

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>General on Joaquín Caro</title>
-    <link>http://blog.joaquin-caro.es/categories/general/</link>
-    <description>Recent content in General on Joaquín Caro</description>
+    <title>Hugo on Joaquín Caro</title>
+    <link>http://blog.joaquin-caro.es/tags/hugo/</link>
+    <description>Recent content in Hugo on Joaquín Caro</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-ES</language>
     <lastBuildDate>Tue, 11 Sep 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://blog.joaquin-caro.es/categories/general/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://blog.joaquin-caro.es/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,16 +20,6 @@
       <description>Uno de los objetivos de tener este blog es poder tener un registro de todo lo que voy aprendiendo y poniendo en practica en mi día a día.
 Con el objetivo de darle un pequeño empujón al blog, apunté una lista de TODOs que podría aplicar para que me resultara más sencillo añadir contenido.
 A parte de tener algo que contar, que esto al fin y al cabo es lo más complicado, otra de las tareas que me salieron era mejorar el proceso de publicar los artículos.</description>
-    </item>
-    
-    <item>
-      <title>Bienvenid@s!</title>
-      <link>http://blog.joaquin-caro.es/post/welcome/</link>
-      <pubDate>Sun, 20 Aug 2017 23:19:03 +0200</pubDate>
-      
-      <guid>http://blog.joaquin-caro.es/post/welcome/</guid>
-      <description>&lt;p&gt;Primero de todo bienvenid@ a mi blog! ¿por qué se llama cuaderno de bitácora? porque en el voy a ir recogiendo todo lo que vaya aprendiendo en mi día a día en este gran oficio que es el desarrollo de software.
-&lt;/p&gt;</description>
     </item>
     
   </channel>
