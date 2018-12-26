@@ -6,7 +6,7 @@
     <description>Recent content in Java on Joaquín Caro</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-ES</language>
-    <lastBuildDate>Mon, 21 Aug 2017 01:05:31 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 21 Aug 2018 01:05:31 +0200</lastBuildDate>
     
 	<atom:link href="http://blog.joaquin-caro.es/categories/java/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Vitaminando la programación funcional en java 8 con Vavr</title>
       <link>http://blog.joaquin-caro.es/post/libreria_vavr.io/</link>
-      <pubDate>Mon, 21 Aug 2017 01:05:31 +0200</pubDate>
+      <pubDate>Tue, 21 Aug 2018 01:05:31 +0200</pubDate>
       
       <guid>http://blog.joaquin-caro.es/post/libreria_vavr.io/</guid>
       <description>&lt;p&gt;Con la release de java 8 se abrió un nuevo paradigma en el desarrollo con java, pero es suficiente con lo que trae de serie? Y si pudiéramos tener otras funcionalidades de lenguajes más puramente funcionales en java?&lt;/p&gt;
