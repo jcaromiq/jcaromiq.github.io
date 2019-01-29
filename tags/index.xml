@@ -50,9 +50,18 @@
     <item>
       <title>Java</title>
       <link>http://blog.joaquin-caro.es/tags/java/</link>
-      <pubDate>Tue, 21 Aug 2018 01:05:31 +0200</pubDate>
+      <pubDate>Wed, 26 Dec 2018 01:05:31 +0200</pubDate>
       
       <guid>http://blog.joaquin-caro.es/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kotlin</title>
+      <link>http://blog.joaquin-caro.es/tags/kotlin/</link>
+      <pubDate>Wed, 26 Dec 2018 01:05:31 +0200</pubDate>
+      
+      <guid>http://blog.joaquin-caro.es/tags/kotlin/</guid>
       <description></description>
     </item>
     

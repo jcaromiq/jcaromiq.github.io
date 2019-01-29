@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://blog.joaquin-caro.es/post/feature_flag/</loc>
+    <lastmod>2018-12-26T01:05:31+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.joaquin-caro.es/post/hugo_automatizando_la_publicacion/</loc>
     <lastmod>2018-09-11T00:00:00+00:00</lastmod>
   </url>
@@ -53,26 +58,32 @@
   </url>
   
   <url>
-    <loc>http://blog.joaquin-caro.es/tags/java/</loc>
-    <lastmod>2018-08-21T01:05:31+02:00</lastmod>
+    <loc>http://blog.joaquin-caro.es/categories/java/</loc>
+    <lastmod>2018-12-26T01:05:31+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://blog.joaquin-caro.es/categories/java/</loc>
-    <lastmod>2018-08-21T01:05:31+02:00</lastmod>
+    <loc>http://blog.joaquin-caro.es/tags/java/</loc>
+    <lastmod>2018-12-26T01:05:31+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://blog.joaquin-caro.es/</loc>
-    <lastmod>2018-09-11T00:00:00+00:00</lastmod>
+    <lastmod>2018-12-26T01:05:31+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.joaquin-caro.es/tags/kotlin/</loc>
+    <lastmod>2018-12-26T01:05:31+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://blog.joaquin-caro.es/post/</loc>
-    <lastmod>2018-09-11T00:00:00+00:00</lastmod>
+    <lastmod>2018-12-26T01:05:31+02:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Joaquín Caro</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-ES</language>
-    <lastBuildDate>Tue, 11 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 26 Dec 2018 01:05:31 +0200</lastBuildDate>
     
 	<atom:link href="http://blog.joaquin-caro.es/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Feature Flag</title>
+      <link>http://blog.joaquin-caro.es/post/feature_flag/</link>
+      <pubDate>Wed, 26 Dec 2018 01:05:31 +0200</pubDate>
+      
+      <guid>http://blog.joaquin-caro.es/post/feature_flag/</guid>
+      <description>Introducción Es muy común ver proyectos que utilizan el mecanismo de Feature Branch para poder tener todo el desarrollo de una feature aislada y una vez finalizada poder integrarla en el flujo de release y poder generar version.
+Sin entrar en debate sobre pros y contras entre Feature Branch y Master Only, la estrategia de Feature Branch tiene un handicap muy caro, el feedback, si la feature tarda por ejemplo un mes en estar finalizada, mínimo estará ese tiempo sin poder ser mergeada con el resto de código, sin poder ser probada con el resto de funcionalidades etc etc.</description>
+    </item>
     
     <item>
       <title>Automatizando la publicación de Hugo con GitLab CI</title>
