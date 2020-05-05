@@ -1,11 +1,3 @@
-
-
-
-    
-
-
-
-
 <!DOCTYPE HTML>
 
 <html>
@@ -18,26 +10,28 @@
              "@type": "WebPage",
              "@id": "http://blog.joaquin-caro.es"
         },
-        "articleSection" : "tags",
-        "name" : "CD",
-        "headline" : "CD",
-        "description" : "",
+        "articleSection" : "post",
+        "name" : "Rust - Sobrecarga de operadores (Add)",
+        "headline" : "Rust - Sobrecarga de operadores (Add)",
+        "description" : "Como y para que sobrecargar el operador Add",
         "inLanguage" : "en",
         "author" : "",
         "creator" : "",
         "publisher": "",
         "accountablePerson" : "",
         "copyrightHolder" : "",
-        "copyrightYear" : "2018",
-        "datePublished": "2018-09-11 00:00:00 &#43;0000 UTC",
-        "dateModified" : "2018-09-11 00:00:00 &#43;0000 UTC",
-        "url" : "http://blog.joaquin-caro.es/tags/cd/",
-        "wordCount" : "0",
-        "keywords" : [ "Blog" ]
+        "copyrightYear" : "2020",
+        "datePublished": "2020-05-05 21:05:31 &#43;0200 &#43;0200",
+        "dateModified" : "2020-05-05 21:05:31 &#43;0200 &#43;0200",
+        "url" : "http://blog.joaquin-caro.es/post/sobrecarga_operador_rust_add/",
+        "wordCount" : "385",
+        "keywords" : [ "rust","Blog" ]
     }
     </script>
         
-            <title>CD - Joaquín Caro</title>
+            
+                <title>Rust - Sobrecarga de operadores (Add)</title>
+            
         
 
         <meta charset="utf-8" />
@@ -48,21 +42,19 @@
 
         
         
-            
-                <meta name="description" content="Mi Cuaderno de bitácora">
-            
+            <meta name="description" content="Como y para que sobrecargar el operador Add">
         
 
         <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="CD"/>
-<meta name="twitter:description" content="Mi Cuaderno de bitácora"/>
+<meta name="twitter:title" content="Rust - Sobrecarga de operadores (Add)"/>
+<meta name="twitter:description" content="Como y para que sobrecargar el operador Add"/>
 <meta name="twitter:site" content="@joaquin_caro"/>
 
-        <meta property="og:title" content="CD" />
-<meta property="og:description" content="Mi Cuaderno de bitácora" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://blog.joaquin-caro.es/tags/cd/" />
-<meta property="og:updated_time" content="2018-09-11T00:00:00&#43;00:00"/>
+        <meta property="og:title" content="Rust - Sobrecarga de operadores (Add)" />
+<meta property="og:description" content="Como y para que sobrecargar el operador Add" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.joaquin-caro.es/post/sobrecarga_operador_rust_add/" /><meta property="article:published_time" content="2020-05-05T21:05:31&#43;02:00"/>
+<meta property="article:modified_time" content="2020-05-05T21:05:31&#43;02:00"/>
         <meta property="og:image" content="http://blog.joaquin-caro.es/images/logo.png">
         <meta property="og:image:type" content="image/png">
         <meta property="og:image:width" content="512">
@@ -70,9 +62,17 @@
         
        
         
-<meta itemprop="name" content="CD">
-<meta itemprop="description" content="Mi Cuaderno de bitácora">
+<meta itemprop="name" content="Rust - Sobrecarga de operadores (Add)">
+<meta itemprop="description" content="Como y para que sobrecargar el operador Add">
 
+
+<meta itemprop="datePublished" content="2020-05-05T21:05:31&#43;02:00" />
+<meta itemprop="dateModified" content="2020-05-05T21:05:31&#43;02:00" />
+<meta itemprop="wordCount" content="385">
+
+
+
+<meta itemprop="keywords" content="rust," />
 
         
 
@@ -125,6 +125,7 @@ if (!doNotTrack) {
       <div id="wrapper">
 
     
+    
 <header id="header">
     
       <h1><a href="/">Joaquín Caro</a></h1>
@@ -149,6 +150,10 @@ if (!doNotTrack) {
     </nav>
     <nav class="main">
         <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
             
             <li class="search">
                 <a class="fa-search" href="#search">Search</a>
@@ -406,35 +411,147 @@ if (!doNotTrack) {
         
 </section>
 
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+
+<li>
+  <a href="//twitter.com/share?url=http%3a%2f%2fblog.joaquin-caro.es%2fpost%2fsobrecarga_operador_rust_add%2f&amp;text=Rust%20-%20Sobrecarga%20de%20operadores%20%28Add%29&amp;via=joaquin_caro" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fblog.joaquin-caro.es%2fpost%2fsobrecarga_operador_rust_add%2f&amp;title=Rust%20-%20Sobrecarga%20de%20operadores%20%28Add%29" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by &amp;body=http%3a%2f%2fblog.joaquin-caro.es%2fpost%2fsobrecarga_operador_rust_add%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+
+        </ul>
+    </section>
+</section>
+
     
     <div id="main">
-        <h1>CD</h1>
         
         
-            <article class="post">
+        <article class="post">
   <header>
     <div class="title">
         
-            <h2><a href="/post/hugo_automatizando_la_publicacion/">Automatizando la publicación de Hugo con GitLab CI</a></h2>
+            <h1><a href="/post/sobrecarga_operador_rust_add/">Rust - Sobrecarga de operadores (Add)</a></h1>
+            
         
         
-            <p>Cómo Automatizar la publicación de un site hecho con Hugo con GitLab CI</p>
+            <p>Como y para que sobrecargar el operador Add</p>
         
     </div>
     <div class="meta">
         
 
         <time class="published"
-            datetime='2018-09-11'>
-            September 11, 2018</time>
+            datetime='2020-05-05'>
+            May 5, 2020</time>
         <span class="author"></span>
         
-            <p>4 minute read</p>
+            <p>2 minute read</p>
         
         
     </div>
 </header>
 
+
+  
+    <section id="social-share">
+      <ul class="icons">
+        
+
+
+
+<li>
+  <a href="//twitter.com/share?url=http%3a%2f%2fblog.joaquin-caro.es%2fpost%2fsobrecarga_operador_rust_add%2f&amp;text=Rust%20-%20Sobrecarga%20de%20operadores%20%28Add%29&amp;via=joaquin_caro" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fblog.joaquin-caro.es%2fpost%2fsobrecarga_operador_rust_add%2f&amp;title=Rust%20-%20Sobrecarga%20de%20operadores%20%28Add%29" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by &amp;body=http%3a%2f%2fblog.joaquin-caro.es%2fpost%2fsobrecarga_operador_rust_add%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+
+      </ul>
+    </section>
+  
+
   
     
 
@@ -455,19 +572,119 @@ if (!doNotTrack) {
         
         
 
-        <a href="/post/hugo_automatizando_la_publicacion/" class="image featured">
-            <img src="/resources/img/hugo_deploy//mailboxes.jpg" alt="">
+        <a href="/post/sobrecarga_operador_rust_add/" class="image featured">
+            <img src="/resources/img/rust/add/abacus.jpg" alt="">
         </a>
     
 
 
-  
-  <p>Uno de los objetivos de tener este blog es poder tener un registro de todo lo que voy aprendiendo y poniendo en practica en mi día a día.</p>
+  <div id="content">
+    <p>Te imaginas poder realizar operaciones aritméticas con tus propios tipos en java? poder tener la clase Money y sumarlas entre ellas?
+Pues en Rust es posible! vamos a ver un ejemplo sencillo de como implementarlo.</p>
+
+<p></p>
+
+<p>Para nuestro ejemplo, queremos poder sumar cantidades de una misma moneda, para eso crearemos el ValueObject Money</p>
+
+<pre><code class="language-rust">#[derive(Debug, PartialEq)]
+enum Currency {DOLLAR, EURO}
+
+#[derive(Debug, PartialEq)]
+struct Money {
+    currency: Currency,
+    amount: u8,
+}
+</code></pre>
+
+<p>Ahora lo que nos gustaría es poder sumar Money sin tener que sumar el amount interno y volviendo a crear un Money.
+En Rust es tan sencillo como implementar el trait std::ops::Add para nuestro struct:</p>
+
+<pre><code class="language-rust">impl std::ops::Add for Money {
+    type Output = Self;
+
+    fn add(self, other: Self) -&gt; Self {
+        Money {
+            currency: self.currency,
+            amount: self.amount + other.amount,
+        }
+    }
+}
+</code></pre>
+
+<p>de esta manera ya podríamos sumar Money entre si:</p>
+
+<pre><code class="language-rust">#[test]
+fn should_add_money_with_same_currency() {
+    let ten_dollars = Money {
+        currency: Currency::DOLLAR,
+        amount: 10,
+    };
+    let five_dollars = Money {
+        currency: Currency::DOLLAR,
+        amount: 5,
+    };
+    let fifteen = Money {
+        currency: Currency::DOLLAR,
+        amount: 15,
+    };
+    assert_eq!(ten_dollars + five_dollars, 
+               fifteen);
+}
+</code></pre>
+
+<p>Pero claro.. que pasa si estamos sumando dolares con euros? con esta implementación la suma sería incorrecta, con lo que en nuestro caso lo que queremos es que el resultado de la suma sea un Result Type.
+Para ese caso, vamos a cambiar nuestra implementación del Add para que el output pase a ser un Result<Money, E> en lugar de un Money</p>
+
+<pre><code class="language-rust">impl std::ops::Add for Money {
+    type Output = Result&lt;Self, &amp;'static str&gt;;
+
+    fn add(self, money: Self) -&gt; Self::Output {
+        if  money.currency != self.currency {
+            return Err(&quot;Can not operate with different currencies&quot;)
+        }
+        Ok(Money {
+            currency: self.currency,
+            amount: self.amount + money.amount,
+        })
+    }
+}
+
+#[test]
+fn should_add_money_with_same_currency() {
+    let ten_dollars = Money {
+        currency: Currency::DOLLAR,
+        amount: 10,
+    };
+    let five_dollars = Money {
+        currency: Currency::DOLLAR,
+        amount: 5,
+    };
+    let fifteen = ten_dollars + five_dollars;
+    assert!(fifteen.is_ok(),true);
+    assert_eq!(fifteen.ok().unwrap().amount,15);
+}
+#[test]
+fn should_not_allow_add_money_with_different_currency() {
+    let ten_dollars = Money {
+        currency: Currency::DOLLAR,
+        amount: 10,
+    };
+    let five_euros = Money {
+        currency: Currency::EURO,
+        amount: 5,
+    };
+    let fifteen = ten_dollars + five_euros;
+    assert!(fifteen.is_err(),true);
+}
+</code></pre>
+
+<p>El Add no es el único operador que tenemos disponible para sobrecargarlo en rust, la lista completa la podemos ver en la <a href="https://doc.rust-lang.org/std/ops/index.html#traits">documentación de rust</a></p>
+
+<p>El ejemplo completo de código se puede descargar en <a href="https://gist.github.com/jcaromiq/aa4f96856354bb0760dd5b28dbd48ca1#file-add_trait-rs">github</a> o ejecutarlo en <a href="https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2018&amp;gist=abb53e17aa6807b0af4f3b8411ed4bed">Rust Playground</a></p>
+  </div>
+
   <footer>
-    <ul class="actions">
-      <li><a href="/post/hugo_automatizando_la_publicacion/" class="button big">Continue Reading</a></li>
-    </ul>
-  <ul class="stats">
+    <ul class="stats">
   <li class="categories">
     <ul>
         
@@ -476,7 +693,7 @@ if (!doNotTrack) {
                 <i class="fa fa-folder"></i>
                 
                 
-                <li><a class="article-category-link" href="http://blog.joaquin-caro.es/categories/general">General</a></li>
+                <li><a class="article-category-link" href="http://blog.joaquin-caro.es/categories/rust">Rust</a></li>
                 
             
         
@@ -490,13 +707,7 @@ if (!doNotTrack) {
                 <i class="fa fa-tags"></i>
                 
                 
-                <li><a class="article-category-link" href="http://blog.joaquin-caro.es/tags/hugo">Hugo</a></li>
-                
-                
-                <li><a class="article-category-link" href="http://blog.joaquin-caro.es/tags/cd">CD</a></li>
-                
-                
-                <li><a class="article-category-link" href="http://blog.joaquin-caro.es/tags/gitlab-ci">GitLab CI</a></li>
+                <li><a class="article-category-link" href="http://blog.joaquin-caro.es/tags/rust">rust</a></li>
                 
             
         
@@ -505,20 +716,19 @@ if (!doNotTrack) {
 </ul>
 
   </footer>
+
 </article>
 
-        
 
-        
 <ul class="actions pagination">
     
-        <li><a href="#" class="disabled button big previous">Previous Page</a></li>
+        <li><a href="/post/feature_flag/"
+                class="button big previous">Feature Flag</a></li>
     
 
     
-        <li><a href="#" class="disabled button big next">Next Page</a></li>
-    
 </ul>
+
 
     </div>
     

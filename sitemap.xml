@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://blog.joaquin-caro.es/post/sobrecarga_operador_rust_add/</loc>
+    <lastmod>2020-05-05T21:05:31+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.joaquin-caro.es/post/feature_flag/</loc>
     <lastmod>2018-12-26T01:05:31+02:00</lastmod>
   </url>
@@ -71,7 +76,7 @@
   
   <url>
     <loc>http://blog.joaquin-caro.es/</loc>
-    <lastmod>2018-12-26T01:05:31+02:00</lastmod>
+    <lastmod>2020-05-05T21:05:31+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -83,7 +88,19 @@
   
   <url>
     <loc>http://blog.joaquin-caro.es/post/</loc>
-    <lastmod>2018-12-26T01:05:31+02:00</lastmod>
+    <lastmod>2020-05-05T21:05:31+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.joaquin-caro.es/tags/rust/</loc>
+    <lastmod>2020-05-05T21:05:31+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.joaquin-caro.es/categories/rust/</loc>
+    <lastmod>2020-05-05T21:05:31+02:00</lastmod>
     <priority>0</priority>
   </url>
   

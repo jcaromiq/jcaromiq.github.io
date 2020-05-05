@@ -20,9 +20,9 @@
         "publisher": "",
         "accountablePerson" : "",
         "copyrightHolder" : "",
-        "copyrightYear" : "2018",
-        "datePublished": "2018-12-26 01:05:31 &#43;0200 &#43;0200",
-        "dateModified" : "2018-12-26 01:05:31 &#43;0200 &#43;0200",
+        "copyrightYear" : "2020",
+        "datePublished": "2020-05-05 21:05:31 &#43;0200 &#43;0200",
+        "dateModified" : "2020-05-05 21:05:31 &#43;0200 &#43;0200",
         "url" : "http://blog.joaquin-caro.es/",
         "wordCount" : "0",
         "keywords" : [ "Blog" ]
@@ -56,7 +56,7 @@
 <meta property="og:description" content="Mi Cuaderno de bitácora" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://blog.joaquin-caro.es/" />
-<meta property="og:updated_time" content="2018-12-26T01:05:31&#43;02:00"/>
+<meta property="og:updated_time" content="2020-05-05T21:05:31&#43;02:00"/>
         <meta property="og:image" content="http://blog.joaquin-caro.es/images/logo.png">
         <meta property="og:image:type" content="image/png">
         <meta property="og:image:width" content="512">
@@ -212,6 +212,42 @@ if (!doNotTrack) {
                 
                         <article class="mini-post">
                             <header>
+                                <h3><a href="/post/sobrecarga_operador_rust_add/">Rust - Sobrecarga de operadores (Add)</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2020-05-05'>
+                                    May 5, 2020</time>
+                            </header>
+                            
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/post/sobrecarga_operador_rust_add/" class="image featured">
+            <img src="/resources/img/rust/add/abacus.jpg" alt="">
+        </a>
+    
+
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
                                 <h3><a href="/post/feature_flag/">Feature Flag</a></h3>
                                 
                                 <time class="published" datetime=
@@ -354,18 +390,6 @@ if (!doNotTrack) {
 
                         </article>
                 
-                        <article class="mini-post">
-                            <header>
-                                <h3><a href="/post/">Posts</a></h3>
-                                
-                                <time class="published" datetime=
-                                    '2018-12-26'>
-                                    December 26, 2018</time>
-                            </header>
-                            
-
-                        </article>
-                
 
                 
                     <a href=
@@ -388,21 +412,21 @@ if (!doNotTrack) {
   <header>
     <div class="title">
         
-            <h2><a href="/post/feature_flag/">Feature Flag</a></h2>
+            <h2><a href="/post/sobrecarga_operador_rust_add/">Rust - Sobrecarga de operadores (Add)</a></h2>
         
         
-            <p>Patron Feature Flag</p>
+            <p>Como y para que sobrecargar el operador Add</p>
         
     </div>
     <div class="meta">
         
 
         <time class="published"
-            datetime='2018-12-26'>
-            December 26, 2018</time>
+            datetime='2020-05-05'>
+            May 5, 2020</time>
         <span class="author"></span>
         
-            <p>6 minute read</p>
+            <p>2 minute read</p>
         
         
     </div>
@@ -417,7 +441,7 @@ if (!doNotTrack) {
 
 
 <li>
-  <a href="//twitter.com/share?url=http%3a%2f%2fblog.joaquin-caro.es%2fpost%2ffeature_flag%2f&amp;text=Feature%20Flag&amp;via=joaquin_caro" target="_blank" class="share-btn twitter">
+  <a href="//twitter.com/share?url=http%3a%2f%2fblog.joaquin-caro.es%2fpost%2fsobrecarga_operador_rust_add%2f&amp;text=Rust%20-%20Sobrecarga%20de%20operadores%20%28Add%29&amp;via=joaquin_caro" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
     </a>
@@ -436,7 +460,7 @@ if (!doNotTrack) {
 
 
 <li>
-  <a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fblog.joaquin-caro.es%2fpost%2ffeature_flag%2f&amp;title=Feature%20Flag" target="_blank" class="share-btn linkedin">
+  <a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fblog.joaquin-caro.es%2fpost%2fsobrecarga_operador_rust_add%2f&amp;title=Rust%20-%20Sobrecarga%20de%20operadores%20%28Add%29" target="_blank" class="share-btn linkedin">
       <i class="fa fa-linkedin"></i>
       <p>LinkedIn</p>
     </a>
@@ -452,7 +476,7 @@ if (!doNotTrack) {
 
 
 <li>
-  <a href="mailto:?subject=Check out this post by &amp;body=http%3a%2f%2fblog.joaquin-caro.es%2fpost%2ffeature_flag%2f" target="_blank" class="share-btn email">
+  <a href="mailto:?subject=Check out this post by &amp;body=http%3a%2f%2fblog.joaquin-caro.es%2fpost%2fsobrecarga_operador_rust_add%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
   </a>
@@ -483,149 +507,115 @@ if (!doNotTrack) {
         
         
 
-        <a href="/post/feature_flag/" class="image featured">
-            <img src="/resources/img/featureFlag//apple.jpg" alt="">
+        <a href="/post/sobrecarga_operador_rust_add/" class="image featured">
+            <img src="/resources/img/rust/add/abacus.jpg" alt="">
         </a>
     
 
 
   <div id="content">
-    
+    <p>Te imaginas poder realizar operaciones aritméticas con tus propios tipos en java? poder tener la clase Money y sumarlas entre ellas?
+Pues en Rust es posible! vamos a ver un ejemplo sencillo de como implementarlo.</p>
 
-<h2 id="introducción">Introducción</h2>
+<p></p>
 
-<p>Es muy común ver proyectos que utilizan el mecanismo de Feature Branch para poder tener todo el desarrollo de una feature aislada y una vez finalizada poder integrarla en el flujo de release y poder generar version.</p>
+<p>Para nuestro ejemplo, queremos poder sumar cantidades de una misma moneda, para eso crearemos el ValueObject Money</p>
 
-<p>Sin entrar en debate sobre pros y contras entre Feature Branch y Master Only, la estrategia de Feature Branch tiene un handicap muy caro, el feedback, si la feature tarda por ejemplo un mes en estar finalizada, mínimo estará ese tiempo sin poder ser mergeada con el resto de código, sin poder ser probada con el resto de funcionalidades etc etc.</p>
+<pre><code class="language-rust">#[derive(Debug, PartialEq)]
+enum Currency {DOLLAR, EURO}
 
-<p>Si, está claro, con Feature Branch también podemos tener feedback &ldquo;rápido&rdquo;, pero para ello necesitaríamos ajustar nuestra pipeline para que estuviera al tanto de cualquier rama que se creara y poder levantar una entorno completamente nuevo por rama, con el coste que esto supone, no sólo a nivel de dinero, si no de preparar los entornos, datos etc etc y aun así, tampoco estaríamos probando la integración de esa feature con el resto.</p>
-
-<p>Imaginemos que podemos integrar nuestro código y poder meterlo en el ciclo de release de nuestra aplicación incluso sin tener la feature acabada, una de las ventajas más obvias es el feedback rápido tanto en la integración de nuestro código con el resto de la aplicación, como en minimizar los temidos conflictos futuros de merge.</p>
-
-<h2 id="feature-flag-al-rescate">Feature flag al rescate!</h2>
-
-<p>Feature Flag, también llamado Feature Toogle, es el patrón perfecto para poder aplicar integración continua a nuestras features de larga duración.</p>
-
-<p>Mediante una condición en nuestro código y un fichero de configuración podríamos activar o no funcionalidad de nuestra aplicación en runtime y una vez finalizada la feature podríamos activarla.</p>
-
-<p>La implementación más sencilla sería una tabla en nuestra base de datos con el nombre de feature y el estado(Activo o no) y en nuestro código tener un if(activo) muestro else noMuestro.</p>
-
-<p>Pero este patrón va mucho más allá, permitiendo poder activar una feature para un grupo de usuarios, país, navegador del usuario, comportamiento o aleatoriamente.</p>
-
-<p>Cada una de estas implementaciones tienen nombres diferentes, AbTesting, Canary Release.. pero todo trata sobre lo mismo, exponer o no funcionalidad dependiendo de condiciones.</p>
-
-<h2 id="feature-flag-for-java">Feature Flag For Java</h2>
-
-<p>Si nuestro stack tecnológico esta formado por java o cualquier lenguaje de la jvm estamos de suerte.</p>
-
-<p><a href="https://ff4j.github.io/">FF4J</a> es la implementación del patron Feature Toggle en todo su esplendor. Sin apenas esfuerzo tenemos integración con diferentes tipos de orígenes de datos para poder guardar nuestras features con su estado, también nos da auditoria de cuantas veces se han aplicado las features, tanto por número total, por usuario, por origen..</p>
-
-<p>También tiene diferentes estrategias de decisión, WhiteList, BlackList, ClientFilter, ServerFilter, Ponderación, etc&hellip; además nos permiten también crearnos nuestra propia estrategia.</p>
-
-<p>Y todo esto configurable mediante una consola web o mediante API, con lo que facilita mucho la creación y mantenimiento de las Features.</p>
-
-<h2 id="show-me-the-code">Show me the code!</h2>
-
-<p>Aunque en el repositorio del proyecto hay muchos ejemplos conectando con diferentes orígenes para las features (jdbc, cassandra, mongo etc etc) me ha parecido interesante crear un ejemplo que no existe.</p>
-
-<p>Supongamos que tenemos un servicio para la configuración de todas las features y demás servicios se conectan a este por http para consultar las features activas.
-En esté ejemplo, he creado un multimodule con dos servicios:</p>
-
-<h3 id="ffconsole">ffconsole</h3>
-
-<p>Este servicio únicamente tiene la consola de administración para crear las features y un plugin para exponerlo mediante rest.
-Para simplificar el ejemplo, está configurado para que el storage sea in memory y sin nada de seguridad (no aplicar en entornos productivos 😜).</p>
-
-<p>La única configuración que hay es en la clase FF4jServletConfiguration.kt en la cual registramos el bean de FF4J, el servlet y la consola web y anotamos la clase para que importe los beans necesarios para exponer la api.
-También para simplificar el ejemplo, hago que la feature ya se de de alta, esto debería de hacerse mediante el panel de administración.</p>
-
-<pre><code class="language-Kotlin">@Bean
-fun getFF4j(): FF4j = FF4j().apply {
-		createFeature(&quot;AwesomeFeature&quot;, true)
-	}
-
-@Bean
-fun getFF4JServlet(): FF4jDispatcherServlet =
-	FF4jDispatcherServlet().apply { ff4j = getFF4j() }
-
-@Bean
-fun ff4jDispatcherServletRegistrationBean(): ServletRegistrationBean =
-	ServletRegistrationBean(getFF4JServlet(), &quot;/ff4j-web-console/*&quot;)
-
+#[derive(Debug, PartialEq)]
+struct Money {
+    currency: Currency,
+    amount: u8,
+}
 </code></pre>
 
-<h3 id="my-awesome-web">my-awesome-web</h3>
+<p>Ahora lo que nos gustaría es poder sumar Money sin tener que sumar el amount interno y volviendo a crear un Money.
+En Rust es tan sencillo como implementar el trait std::ops::Add para nuestro struct:</p>
 
-<p>Una aplicación spring boot con un controlador que aplica una lógica u otra dependiendo si la feature esta o no activa.
-Esta aplicación se conectará a ffconsole mediante http.
-La configuración es tan sencilla como decirle cual es el storage:</p>
+<pre><code class="language-rust">impl std::ops::Add for Money {
+    type Output = Self;
 
-<pre><code class="language-Kotlin">@Bean
-fun ff4j(): FF4j =
-	FF4j().apply {
-		featureStore = FeatureStoreHttp(&quot;http://ff4j-console:8080/api/ff4j&quot;)
-	}
+    fn add(self, other: Self) -&gt; Self {
+        Money {
+            currency: self.currency,
+            amount: self.amount + other.amount,
+        }
+    }
+}
 </code></pre>
 
-<p>y en el controlador tenemos un endpoint el cual devolverá un HTTP_200 en caso de que la feature esté activa y un HTTP_404 en caso de que no lo este.</p>
+<p>de esta manera ya podríamos sumar Money entre si:</p>
 
-<pre><code class="language-Kotlin">@GetMapping(&quot;/&quot;)
-fun home(): ResponseEntity&lt;String&gt; =
-	ff.operateWith(&quot;AwesomeFeature&quot;,
-		ResponseEntity(&quot;Not available&quot;, HttpStatus.NOT_FOUND),
-		ResponseEntity(&quot;This is the awesome Feature&quot;, HttpStatus.OK))
+<pre><code class="language-rust">#[test]
+fn should_add_money_with_same_currency() {
+    let ten_dollars = Money {
+        currency: Currency::DOLLAR,
+        amount: 10,
+    };
+    let five_dollars = Money {
+        currency: Currency::DOLLAR,
+        amount: 5,
+    };
+    let fifteen = Money {
+        currency: Currency::DOLLAR,
+        amount: 15,
+    };
+    assert_eq!(ten_dollars + five_dollars, 
+               fifteen);
+}
 </code></pre>
 
-<p>Este es el único código que una vez la feature ya esté implementada y probada lo suficiente en el entorno productivo, se debería de limpiar y aplicarlo siempre sin depender de si el flag esta activo o no.</p>
+<p>Pero claro.. que pasa si estamos sumando dolares con euros? con esta implementación la suma sería incorrecta, con lo que en nuestro caso lo que queremos es que el resultado de la suma sea un Result Type.
+Para ese caso, vamos a cambiar nuestra implementación del Add para que el output pase a ser un Result<Money, E> en lugar de un Money</p>
 
-<p>Aquí es mi única pega de esta librería, la api para trabajar con las features peca un poco de funcionalidad, en el caso de que no exista lanza una runtimeException por ejemplo, o tratar con las features es algo imperativo, por lo que me he tomado la libertad para este ejemplo de hacer un pequeño wrapper y hacerlo un poco más &ldquo;funcional&rdquo;, con lo que expongo tres métodos para trabajar con las features:</p>
+<pre><code class="language-rust">impl std::ops::Add for Money {
+    type Output = Result&lt;Self, &amp;'static str&gt;;
 
-<pre><code class="language-Kotlin">fun enabled(featureID: String): Boolean =
-	getFeature(featureID)
-		.map { it.isEnable }
-		.orElse(false)
+    fn add(self, money: Self) -&gt; Self::Output {
+        if  money.currency != self.currency {
+            return Err(&quot;Can not operate with different currencies&quot;)
+        }
+        Ok(Money {
+            currency: self.currency,
+            amount: self.amount + money.amount,
+        })
+    }
+}
 
-fun getFeature(featureID: String): Optional&lt;Feature&gt; =
-	try {
-		Optional.of(ff4j.getFeature(featureID))
-	} catch (nf: FeatureNotFoundException) {
-		Optional.empty()
-	}
-
-fun &lt;T&gt; operateWith(featureId: String, nonExistsValue: T, existsValue: T): T =
-	getFeature(featureId)
-		.filter { it.isEnable }
-		.map { existsValue }
-		.orElse(nonExistsValue)
-
-fun &lt;T&gt; operateWith(featureId: String, nonExistsMapper: () -&gt; T, existsMapper: () -&gt; T): T =
-	getFeature(featureId)
-		.filter { it.isEnable }
-		.map { existsMapper() }
-		.orElse(nonExistsMapper())
+#[test]
+fn should_add_money_with_same_currency() {
+    let ten_dollars = Money {
+        currency: Currency::DOLLAR,
+        amount: 10,
+    };
+    let five_dollars = Money {
+        currency: Currency::DOLLAR,
+        amount: 5,
+    };
+    let fifteen = ten_dollars + five_dollars;
+    assert!(fifteen.is_ok(),true);
+    assert_eq!(fifteen.ok().unwrap().amount,15);
+}
+#[test]
+fn should_not_allow_add_money_with_different_currency() {
+    let ten_dollars = Money {
+        currency: Currency::DOLLAR,
+        amount: 10,
+    };
+    let five_euros = Money {
+        currency: Currency::EURO,
+        amount: 5,
+    };
+    let fifteen = ten_dollars + five_euros;
+    assert!(fifteen.is_err(),true);
+}
 </code></pre>
 
-<p>El proyecto está montado con un docker compose el cual con un <code>make all</code> genera los artefactos y levanta dos dockers para poder hacer pruebas.
-la url de la parte de adminstracion es <a href="http://localhost:9090/ff4j-web-console/">http://localhost:9090/ff4j-web-console/</a>
-y la url para la feature <a href="http://localhost:8080/">http://localhost:8080/</a></p>
+<p>El Add no es el único operador que tenemos disponible para sobrecargarlo en rust, la lista completa la podemos ver en la <a href="https://doc.rust-lang.org/std/ops/index.html#traits">documentación de rust</a></p>
 
-<p>El proyecto al completo está en <a href="https://github.com/jcaromiq/ff4j-sample">github</a>.</p>
-
-<h2 id="conclusión">Conclusión</h2>
-
-<p>Este patrón no ha de ser utilizado como un martillo para todos los casos.</p>
-
-<p>La mejor estrategia siempre es poder partir las funcionalidades / historias de usuario en más pequeñas para poder integrarlas lo antes posible, pero siempre hay casos que la feature no puede ser entregada hasta que no esté finalizada al 100% y es allí donde aplica.</p>
-
-<p>Importante la fase de limpiar el código una vez la feature esta desplegada y probada durante el tiempo acordado, para la correcta evolución y mantenimiento de la aplicación.</p>
-
-<h2 id="bibliografia">Bibliografia</h2>
-
-<ul>
-<li><a href="https://martinfowler.com/bliki/FeatureToggle.html">FeatureToogle</a></li>
-<li><a href="https://github.com/ff4j/ff4j/wiki">FF4J wiki</a></li>
-</ul>
-
+<p>El ejemplo completo de código se puede descargar en <a href="https://gist.github.com/jcaromiq/aa4f96856354bb0760dd5b28dbd48ca1#file-add_trait-rs">github</a> o ejecutarlo en <a href="https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2018&amp;gist=abb53e17aa6807b0af4f3b8411ed4bed">Rust Playground</a></p>
   </div>
 
   <footer>
@@ -638,7 +628,7 @@ y la url para la feature <a href="http://localhost:8080/">http://localhost:8080/
                 <i class="fa fa-folder"></i>
                 
                 
-                <li><a class="article-category-link" href="http://blog.joaquin-caro.es/categories/java">Java</a></li>
+                <li><a class="article-category-link" href="http://blog.joaquin-caro.es/categories/rust">Rust</a></li>
                 
             
         
@@ -652,10 +642,7 @@ y la url para la feature <a href="http://localhost:8080/">http://localhost:8080/
                 <i class="fa fa-tags"></i>
                 
                 
-                <li><a class="article-category-link" href="http://blog.joaquin-caro.es/tags/java">java</a></li>
-                
-                
-                <li><a class="article-category-link" href="http://blog.joaquin-caro.es/tags/kotlin">kotlin</a></li>
+                <li><a class="article-category-link" href="http://blog.joaquin-caro.es/tags/rust">rust</a></li>
                 
             
         
@@ -670,8 +657,8 @@ y la url para la feature <a href="http://localhost:8080/">http://localhost:8080/
 
 <ul class="actions pagination">
     
-        <li><a href="/post/hugo_automatizando_la_publicacion/"
-                class="button big previous">Automatizando la publicación de Hugo con GitLab CI</a></li>
+        <li><a href="/post/feature_flag/"
+                class="button big previous">Feature Flag</a></li>
     
 
     
@@ -690,7 +677,7 @@ y la url para la feature <a href="http://localhost:8080/">http://localhost:8080/
 
 
 <li>
-  <a href="//twitter.com/share?url=http%3a%2f%2fblog.joaquin-caro.es%2fpost%2ffeature_flag%2f&amp;text=Feature%20Flag&amp;via=joaquin_caro" target="_blank" class="share-btn twitter">
+  <a href="//twitter.com/share?url=http%3a%2f%2fblog.joaquin-caro.es%2fpost%2fsobrecarga_operador_rust_add%2f&amp;text=Rust%20-%20Sobrecarga%20de%20operadores%20%28Add%29&amp;via=joaquin_caro" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
     </a>
@@ -709,7 +696,7 @@ y la url para la feature <a href="http://localhost:8080/">http://localhost:8080/
 
 
 <li>
-  <a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fblog.joaquin-caro.es%2fpost%2ffeature_flag%2f&amp;title=Feature%20Flag" target="_blank" class="share-btn linkedin">
+  <a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fblog.joaquin-caro.es%2fpost%2fsobrecarga_operador_rust_add%2f&amp;title=Rust%20-%20Sobrecarga%20de%20operadores%20%28Add%29" target="_blank" class="share-btn linkedin">
       <i class="fa fa-linkedin"></i>
       <p>LinkedIn</p>
     </a>
@@ -725,7 +712,7 @@ y la url para la feature <a href="http://localhost:8080/">http://localhost:8080/
 
 
 <li>
-  <a href="mailto:?subject=Check out this post by &amp;body=http%3a%2f%2fblog.joaquin-caro.es%2fpost%2ffeature_flag%2f" target="_blank" class="share-btn email">
+  <a href="mailto:?subject=Check out this post by &amp;body=http%3a%2f%2fblog.joaquin-caro.es%2fpost%2fsobrecarga_operador_rust_add%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
   </a>
@@ -865,6 +852,44 @@ y la url para la feature <a href="http://localhost:8080/">http://localhost:8080/
           
         
 
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/post/sobrecarga_operador_rust_add/">Rust - Sobrecarga de operadores (Add)</a>
+              </h3>
+              
+              <time class="published" datetime='2020-05-05'>
+                May 5, 2020
+              </time>
+            </header>
+            
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/post/sobrecarga_operador_rust_add/" class="image featured">
+            <img src="/resources/img/rust/add/abacus.jpg" alt="">
+        </a>
+    
+
+
+          </article>
         
           <article class="mini-post">
             <header>
@@ -1018,20 +1043,6 @@ y la url para la feature <a href="http://localhost:8080/">http://localhost:8080/
 
           </article>
         
-          <article class="mini-post">
-            <header>
-              <h3>
-                <a href="/post/">Posts</a>
-              </h3>
-              
-              <time class="published" datetime='2018-12-26'>
-                December 26, 2018
-              </time>
-            </header>
-            
-
-          </article>
-        
       </div>
 
       
@@ -1150,7 +1161,7 @@ y la url para la feature <a href="http://localhost:8080/">http://localhost:8080/
     
     <p class="copyright">
       
-        &copy; 2018
+        &copy; 2020
         
           Joaquín Caro
         

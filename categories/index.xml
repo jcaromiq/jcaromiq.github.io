@@ -28,5 +28,14 @@
       <description></description>
     </item>
     
+    <item>
+      <title>Rust</title>
+      <link>http://blog.joaquin-caro.es/categories/rust/</link>
+      <pubDate>Tue, 05 May 2020 21:05:31 +0200</pubDate>
+      
+      <guid>http://blog.joaquin-caro.es/categories/rust/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
