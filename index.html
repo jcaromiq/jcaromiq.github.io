@@ -567,7 +567,7 @@ fn should_add_money_with_same_currency() {
 }
 </code></pre>
 
-<p>Pero claro.. que pasa si estamos sumando dolares con euros? con esta implementación la suma sería incorrecta, con lo que en nuestro caso lo que queremos es que el resultado de la suma sea un Result Type.
+<p>Pero claro.. qué pasa si estamos sumando dólares con euros? con esta implementación la suma sería incorrecta, con lo que en nuestro caso lo que queremos es que el resultado de la suma sea un Result Type.
 Para ese caso, vamos a cambiar nuestra implementación del Add para que el output pase a ser un Result<Money, E> en lugar de un Money</p>
 
 <pre><code class="language-rust">impl std::ops::Add for Money {
