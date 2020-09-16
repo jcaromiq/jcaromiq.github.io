@@ -6,10 +6,22 @@
     <description>Recent content in Rust on Joaquín Caro</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-ES</language>
-    <lastBuildDate>Tue, 05 May 2020 21:05:31 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 15 Sep 2020 22:05:31 +0200</lastBuildDate>
     
 	<atom:link href="http://blog.joaquin-caro.es/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Rust</title>
+      <link>http://blog.joaquin-caro.es/post/rust/</link>
+      <pubDate>Tue, 15 Sep 2020 22:05:31 +0200</pubDate>
+      
+      <guid>http://blog.joaquin-caro.es/post/rust/</guid>
+      <description>&lt;p&gt;Seguramente has escuchado hablar de &lt;a href=&#34;https://www.rust-lang.org/&#34;&gt;Rust&lt;/a&gt;, de todas sus bondades y su quizás compleja curva de aprendizaje.
+En este articulo no voy a profundizar en que es Rust, si no que voy a detallar las características que en el poco tiempo que llevo usándolo he visto que hacen de Rust un lenguaje muy atractivo e interesante de usar.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Rust - Sobrecarga de operadores (Add)</title>
