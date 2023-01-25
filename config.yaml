@@ -1,4 +1,4 @@
-baseurl: https://blog.joaquin-caro.es/blog
+baseurl: https://blog.joaquin-caro.es
 languageCode: es-es
 theme: hugo-theme-stack
 paginate: 5
