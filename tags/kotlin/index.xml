@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>kotlin on Joaquín Caro</title><link>https://blog.joaquin-caro.es/tags/kotlin/</link><description>Recent content in kotlin on Joaquín Caro</description><generator>Hugo -- gohugo.io</generator><language>es-es</language><lastBuildDate>Wed, 26 Dec 2018 01:05:31 +0200</lastBuildDate><atom:link href="https://blog.joaquin-caro.es/tags/kotlin/index.xml" rel="self" type="application/rss+xml"/><item><title>Feature Flag</title><link>https://blog.joaquin-caro.es/p/feature-flag/</link><pubDate>Wed, 26 Dec 2018 01:05:31 +0200</pubDate><guid>https://blog.joaquin-caro.es/p/feature-flag/</guid><description>&lt;img src="https://blog.joaquin-caro.es/p/feature-flag/apple.jpg" alt="Featured image of post Feature Flag" />&lt;h2 id="introducción">Introducción&lt;/h2>
+&lt;p>Es muy común ver proyectos que utilizan el mecanismo de Feature Branch para poder tener todo el desarrollo de una feature aislada y una vez finalizada poder integrarla en el flujo de release y poder generar version.&lt;/p>
+&lt;p>Sin entrar en debate sobre pros y contras entre Feature Branch y Master Only, la estrategia de Feature Branch tiene un handicap muy caro, el feedback, si la feature tarda por ejemplo un mes en estar finalizada, mínimo estará ese tiempo sin poder ser mergeada con el resto de código, sin poder ser probada con el resto de funcionalidades etc etc.&lt;/p>
+&lt;p>Si, está claro, con Feature Branch también podemos tener feedback &amp;ldquo;rápido&amp;rdquo;, pero para ello necesitaríamos ajustar nuestra pipeline para que estuviera al tanto de cualquier rama que se creara y poder levantar una entorno completamente nuevo por rama, con el coste que esto supone, no sólo a nivel de dinero, si no de preparar los entornos, datos etc etc y aun así, tampoco estaríamos probando la integración de esa feature con el resto.&lt;/p>
+&lt;p>Imaginemos que podemos integrar nuestro código y poder meterlo en el ciclo de release de nuestra aplicación incluso sin tener la feature acabada, una de las ventajas más obvias es el feedback rápido tanto en la integración de nuestro código con el resto de la aplicación, como en minimizar los temidos conflictos futuros de merge.&lt;/p>
+&lt;h2 id="feature-flag-al-rescate">Feature flag al rescate!&lt;/h2>
+&lt;p>Feature Flag, también llamado Feature Toogle, es el patrón perfecto para poder aplicar integración continua a nuestras features de larga duración.&lt;/p>
+&lt;p>Mediante una condición en nuestro código y un fichero de configuración podríamos activar o no funcionalidad de nuestra aplicación en runtime y una vez finalizada la feature podríamos activarla.&lt;/p>
+&lt;p>La implementación más sencilla sería una tabla en nuestra base de datos con el nombre de feature y el estado(Activo o no) y en nuestro código tener un if(activo) muestro else noMuestro.&lt;/p>
+&lt;p>Pero este patrón va mucho más allá, permitiendo poder activar una feature para un grupo de usuarios, país, navegador del usuario, comportamiento o aleatoriamente.&lt;/p>
+&lt;p>Cada una de estas implementaciones tienen nombres diferentes, AbTesting, Canary Release.. pero todo trata sobre lo mismo, exponer o no funcionalidad dependiendo de condiciones.&lt;/p>
+&lt;h2 id="feature-flag-for-java">Feature Flag For Java&lt;/h2>
+&lt;p>Si nuestro stack tecnológico esta formado por java o cualquier lenguaje de la jvm estamos de suerte.&lt;/p>
+&lt;p>&lt;a class="link" href="https://ff4j.github.io/" target="_blank" rel="noopener"
+>FF4J&lt;/a> es la implementación del patron Feature Toggle en todo su esplendor. Sin apenas esfuerzo tenemos integración con diferentes tipos de orígenes de datos para poder guardar nuestras features con su estado, también nos da auditoria de cuantas veces se han aplicado las features, tanto por número total, por usuario, por origen..&lt;/p>
+&lt;p>También tiene diferentes estrategias de decisión, WhiteList, BlackList, ClientFilter, ServerFilter, Ponderación, etc&amp;hellip; además nos permiten también crearnos nuestra propia estrategia.&lt;/p>
+&lt;p>Y todo esto configurable mediante una consola web o mediante API, con lo que facilita mucho la creación y mantenimiento de las Features.&lt;/p>
+&lt;h2 id="show-me-the-code">Show me the code!&lt;/h2>
+&lt;p>Aunque en el repositorio del proyecto hay muchos ejemplos conectando con diferentes orígenes para las features (jdbc, cassandra, mongo etc etc) me ha parecido interesante crear un ejemplo que no existe.&lt;/p>
+&lt;p>Supongamos que tenemos un servicio para la configuración de todas las features y demás servicios se conectan a este por http para consultar las features activas.
+En esté ejemplo, he creado un multimodule con dos servicios:&lt;/p>
+&lt;h3 id="ffconsole">ffconsole&lt;/h3>
+&lt;p>Este servicio únicamente tiene la consola de administración para crear las features y un plugin para exponerlo mediante rest.
+Para simplificar el ejemplo, está configurado para que el storage sea in memory y sin nada de seguridad (no aplicar en entornos productivos 😜).&lt;/p>
+&lt;p>La única configuración que hay es en la clase FF4jServletConfiguration.kt en la cual registramos el bean de FF4J, el servlet y la consola web y anotamos la clase para que importe los beans necesarios para exponer la api.
+También para simplificar el ejemplo, hago que la feature ya se de de alta, esto debería de hacerse mediante el panel de administración.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-Kotlin" data-lang="Kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@Bean&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fun&lt;/span> &lt;span class="nf">getFF4j&lt;/span>&lt;span class="p">():&lt;/span> &lt;span class="n">FF4j&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">FF4j&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="n">apply&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">createFeature&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;AwesomeFeature&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">true&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@Bean&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fun&lt;/span> &lt;span class="nf">getFF4JServlet&lt;/span>&lt;span class="p">():&lt;/span> &lt;span class="n">FF4jDispatcherServlet&lt;/span> &lt;span class="p">=&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">FF4jDispatcherServlet&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="n">apply&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">ff4j&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">getFF4j&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@Bean&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fun&lt;/span> &lt;span class="nf">ff4jDispatcherServletRegistrationBean&lt;/span>&lt;span class="p">():&lt;/span> &lt;span class="n">ServletRegistrationBean&lt;/span> &lt;span class="p">=&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ServletRegistrationBean&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">getFF4JServlet&lt;/span>&lt;span class="p">(),&lt;/span> &lt;span class="s2">&amp;#34;/ff4j-web-console/*&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="my-awesome-web">my-awesome-web&lt;/h3>
+&lt;p>Una aplicación spring boot con un controlador que aplica una lógica u otra dependiendo si la feature esta o no activa.
+Esta aplicación se conectará a ffconsole mediante http.
+La configuración es tan sencilla como decirle cual es el storage:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-Kotlin" data-lang="Kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@Bean&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fun&lt;/span> &lt;span class="nf">ff4j&lt;/span>&lt;span class="p">():&lt;/span> &lt;span class="n">FF4j&lt;/span> &lt;span class="p">=&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">FF4j&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="n">apply&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">featureStore&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">FeatureStoreHttp&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;http://ff4j-console:8080/api/ff4j&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>y en el controlador tenemos un endpoint el cual devolverá un HTTP_200 en caso de que la feature esté activa y un HTTP_404 en caso de que no lo este.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-Kotlin" data-lang="Kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@GetMapping&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;/&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fun&lt;/span> &lt;span class="nf">home&lt;/span>&lt;span class="p">():&lt;/span> &lt;span class="n">ResponseEntity&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="p">&amp;gt;&lt;/span> &lt;span class="p">=&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ff&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">operateWith&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;AwesomeFeature&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ResponseEntity&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Not available&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nc">HttpStatus&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">NOT_FOUND&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ResponseEntity&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;This is the awesome Feature&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nc">HttpStatus&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">OK&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Este es el único código que una vez la feature ya esté implementada y probada lo suficiente en el entorno productivo, se debería de limpiar y aplicarlo siempre sin depender de si el flag esta activo o no.&lt;/p>
+&lt;p>Aquí es mi única pega de esta librería, la api para trabajar con las features peca un poco de funcionalidad, en el caso de que no exista lanza una runtimeException por ejemplo, o tratar con las features es algo imperativo, por lo que me he tomado la libertad para este ejemplo de hacer un pequeño wrapper y hacerlo un poco más &amp;ldquo;funcional&amp;rdquo;, con lo que expongo tres métodos para trabajar con las features:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-Kotlin" data-lang="Kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="k">fun&lt;/span> &lt;span class="nf">enabled&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">featureID&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">):&lt;/span> &lt;span class="n">Boolean&lt;/span> &lt;span class="p">=&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">getFeature&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">featureID&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">map&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="k">it&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">isEnable&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">orElse&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">false&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fun&lt;/span> &lt;span class="nf">getFeature&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">featureID&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">):&lt;/span> &lt;span class="n">Optional&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="n">Feature&lt;/span>&lt;span class="p">&amp;gt;&lt;/span> &lt;span class="p">=&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nc">Optional&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">of&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ff4j&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">getFeature&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">featureID&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">catch&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">nf&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">FeatureNotFoundException&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nc">Optional&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">empty&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fun&lt;/span> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nc">T&lt;/span>&lt;span class="p">&amp;gt;&lt;/span> &lt;span class="nf">operateWith&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">featureId&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">nonExistsValue&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">T&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">existsValue&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">T&lt;/span>&lt;span class="p">):&lt;/span> &lt;span class="n">T&lt;/span> &lt;span class="p">=&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">getFeature&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">featureId&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">filter&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="k">it&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">isEnable&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">map&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">existsValue&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">orElse&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">nonExistsValue&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fun&lt;/span> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nc">T&lt;/span>&lt;span class="p">&amp;gt;&lt;/span> &lt;span class="nf">operateWith&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">featureId&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">nonExistsMapper&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">()&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="n">T&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">existsMapper&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">()&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="n">T&lt;/span>&lt;span class="p">):&lt;/span> &lt;span class="n">T&lt;/span> &lt;span class="p">=&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">getFeature&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">featureId&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">filter&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="k">it&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">isEnable&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">map&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">existsMapper&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">orElse&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">nonExistsMapper&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>El proyecto está montado con un docker compose el cual con un &lt;code>make all&lt;/code> genera los artefactos y levanta dos dockers para poder hacer pruebas.
+la url de la parte de adminstracion es http://localhost:9090/ff4j-web-console/
+y la url para la feature http://localhost:8080/&lt;/p>
+&lt;p>El proyecto al completo está en &lt;a class="link" href="https://github.com/jcaromiq/ff4j-sample" target="_blank" rel="noopener"
+>github&lt;/a>.&lt;/p>
+&lt;h2 id="conclusión">Conclusión&lt;/h2>
+&lt;p>Este patrón no ha de ser utilizado como un martillo para todos los casos.&lt;/p>
+&lt;p>La mejor estrategia siempre es poder partir las funcionalidades / historias de usuario en más pequeñas para poder integrarlas lo antes posible, pero siempre hay casos que la feature no puede ser entregada hasta que no esté finalizada al 100% y es allí donde aplica.&lt;/p>
+&lt;p>Importante la fase de limpiar el código una vez la feature esta desplegada y probada durante el tiempo acordado, para la correcta evolución y mantenimiento de la aplicación.&lt;/p>
+&lt;h2 id="bibliografia">Bibliografia&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://martinfowler.com/bliki/FeatureToggle.html" target="_blank" rel="noopener"
+>FeatureToogle&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://github.com/ff4j/ff4j/wiki" target="_blank" rel="noopener"
+>FF4J wiki&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

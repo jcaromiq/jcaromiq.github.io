@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GitLab CI on Joaquín Caro</title><link>https://blog.joaquin-caro.es/tags/gitlab-ci/</link><description>Recent content in GitLab CI on Joaquín Caro</description><generator>Hugo -- gohugo.io</generator><language>es-es</language><lastBuildDate>Tue, 11 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.joaquin-caro.es/tags/gitlab-ci/index.xml" rel="self" type="application/rss+xml"/><item><title>Automatizando la publicación de Hugo con GitLab CI</title><link>https://blog.joaquin-caro.es/p/automatizando-la-publicaci%C3%B3n-de-hugo-con-gitlab-ci/</link><pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.joaquin-caro.es/p/automatizando-la-publicaci%C3%B3n-de-hugo-con-gitlab-ci/</guid><description>&lt;img src="https://blog.joaquin-caro.es/p/automatizando-la-publicaci%C3%B3n-de-hugo-con-gitlab-ci/mailboxes.jpg" alt="Featured image of post Automatizando la publicación de Hugo con GitLab CI" />&lt;p>Uno de los objetivos de tener este blog es poder tener un registro de todo lo que voy aprendiendo y poniendo en practica en mi día a día.&lt;/p>
+&lt;p>Con el objetivo de darle un pequeño empujón al blog, apunté una lista de TODOs que podría aplicar para que me resultara más sencillo añadir contenido.&lt;/p>
+&lt;p>A parte de tener algo que contar, que esto al fin y al cabo es lo más complicado, otra de las tareas que me salieron era mejorar el proceso de publicar los artículos.&lt;/p>
+&lt;p>Hasta ahora el proceso era el siguiente:&lt;/p>
+&lt;ul>
+&lt;li>Crear un nuevo post con el cli que trae hugo &lt;code>hugo new post/nombre_del_articulo&lt;/code>&lt;/li>
+&lt;li>Escribir el articulo en draft e ir revisándolo en local con otro comando del cli &lt;code>hugo serve -D&lt;/code>&lt;/li>
+&lt;li>Una vez que finalizado el articulo, quitarle el estado draft y publicar el site en local en la carpeta public &lt;code>hugo&lt;/code>&lt;/li>
+&lt;li>Una vez creada la carpeta public, esta commitearla y pushearla al repo de github enlazado con github pages&lt;/li>
+&lt;/ul>
+&lt;p>Con estos pasos ya tenia el nuevo articulo publicado, pero lo más tedioso de este proceso era tener la parte publica en un repo &amp;lsquo;Carpeta public&amp;rsquo; y la parte privada en otro repo, en este caso uno privado de gitLab.&lt;/p>
+&lt;p>Mantener dos repos con sus respectivos commits, pushs etc, me resultaba un poco excesivo, lo único que quería era tener una aparte privada y que la publicación de la publica fuera automática.&lt;/p>
+&lt;p>Pensando un poco, al tener la parte privada en gitLab y gitLab ofrecer una CI para los proyectos hospedados en gitLab, se me ocurrió crearme una pipeline que en cada push a master me generara la parte publica y la pusheara al repo de github enlazado a github pages, pues manos a la obra!.&lt;/p>
+&lt;p>Lo primero que quería hacer es tener todo el cli de hugo dockerizado, para poder hacer las pruebas en local y ademas sería el docker que usaría la CI para la generación del site.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-Dockerfile" data-lang="Dockerfile">&lt;span class="line">&lt;span class="cl">&lt;span class="k">FROM&lt;/span>&lt;span class="s"> alpine:latest&lt;/span>&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">MAINTAINER&lt;/span>&lt;span class="s"> JoaquinCaro &amp;lt;me@joaquin-caro.es&amp;gt;&lt;/span>&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">RUN&lt;/span> apk add --no-cache &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> curl &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> git &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> openssh-client &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> rsync&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">ENV&lt;/span> VERSION 0.48&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">RUN&lt;/span> mkdir -p /usr/local/src &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="nb">cd&lt;/span> /usr/local/src &lt;span class="err">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> curl -L https://github.com/gohugoio/hugo/releases/download/v&lt;span class="si">${&lt;/span>&lt;span class="nv">VERSION&lt;/span>&lt;span class="si">}&lt;/span>/hugo_&lt;span class="si">${&lt;/span>&lt;span class="nv">VERSION&lt;/span>&lt;span class="si">}&lt;/span>_linux-64bit.tar.gz &lt;span class="p">|&lt;/span> tar -xz &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> mv hugo /usr/local/bin/hugo &lt;span class="err">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> addgroup -Sg &lt;span class="m">1000&lt;/span> hugo &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> adduser -SG hugo -u &lt;span class="m">1000&lt;/span> -h /src hugo&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">WORKDIR&lt;/span>&lt;span class="s"> /src&lt;/span>&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Basicamente, me baso en un alpine y me descargo la version de Hugo de su site y lo meto en el path&lt;/p>
+&lt;p>y pusheo la imagen a &lt;a class="link" href="https://hub.docker.com/r/jcaromiq/hugocms/" target="_blank" rel="noopener"
+>dockerHub&lt;/a>&lt;/p>
+&lt;p>una vez tengo ya la imagen base para la CI, toca configurar gitLab-CI con su fichero que gitlab-ci.yml&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-v" data-lang="v">&lt;span class="line">&lt;span class="cl">&lt;span class="nl">build&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">stage&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nv">build&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nl">before_script&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="nv">git&lt;/span> &lt;span class="nv">submodule&lt;/span> &lt;span class="nv">update&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="nv">init&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="s1">&amp;#39;which ssh-agent || ( apt-get update -y &amp;amp;&amp;amp; apt-get install openssh-client -y )&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="nv">eval&lt;/span> &lt;span class="err">$&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nv">ssh&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="nv">agent&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nv">s&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="nv">mkdir&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nv">p&lt;/span> &lt;span class="o">~/&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">ssh&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="nv">echo&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="o">$&lt;/span>&lt;span class="nv">PRIVATE_KEY&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="o">|&lt;/span> &lt;span class="nv">tr&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nv">d&lt;/span> &lt;span class="s1">&amp;#39;&lt;/span>&lt;span class="se">\r&lt;/span>&lt;span class="s1">&amp;#39;&lt;/span> &lt;span class="p">&amp;gt;&lt;/span> &lt;span class="o">~/&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">ssh&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nv">id_rsa&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="nv">chmod&lt;/span> &lt;span class="mi">600&lt;/span> &lt;span class="o">~/&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">ssh&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nv">id_rsa&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="nv">ssh&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="nv">keyscan&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nv">t&lt;/span> &lt;span class="nv">rsa&lt;/span> &lt;span class="nv">github&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">com&lt;/span> &lt;span class="o">&amp;gt;&amp;gt;&lt;/span> &lt;span class="o">~/&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">ssh&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nv">known_hosts&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="nv">ssh&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="nv">add&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nv">k&lt;/span> &lt;span class="o">~/&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">ssh&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nv">id_rsa&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="nv">git&lt;/span> &lt;span class="nv">config&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="nv">global&lt;/span> &lt;span class="nv">user&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">name&lt;/span> &lt;span class="s2">&amp;#34;Joaquin Caro&amp;#34;&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="nv">git&lt;/span> &lt;span class="nv">config&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="nv">global&lt;/span> &lt;span class="nv">user&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">email&lt;/span> &lt;span class="nv">me&lt;/span>&lt;span class="o">@&lt;/span>&lt;span class="nv">joaquin&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="nv">caro&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">es&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="nv">git&lt;/span> &lt;span class="nv">clone&lt;/span> &lt;span class="nv">git&lt;/span>&lt;span class="o">@&lt;/span>&lt;span class="nv">github&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">com&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="nv">jcaromiq&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nv">jcaromiq&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">github&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">io&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">git&lt;/span> &lt;span class="nv">public&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nl">script&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="nv">hugo&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nv">v&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nl">after_script&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="nv">export&lt;/span> &lt;span class="nc">GIT_LOG_MESSAGE&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="sc">`git log --format=%B -n 1 $CI_BUILD_REF`&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="nv">cd&lt;/span> &lt;span class="nv">public&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="nv">git&lt;/span> &lt;span class="nv">add&lt;/span> &lt;span class="p">.&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="nv">git&lt;/span> &lt;span class="nv">commit&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nv">am&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="o">$&lt;/span>&lt;span class="nv">GIT_LOG_MESSAGE&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="nv">git&lt;/span> &lt;span class="nv">push&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nv">u&lt;/span> &lt;span class="nv">origin&lt;/span> &lt;span class="nv">master&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nl">only&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="nv">master&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Con lo que básicamente le estoy diciendo que escuche los cambios en master y se baje el site público que tengo en &lt;a class="link" href="https://github.com/jcaromiq/jcaromiq.github.io" target="_blank" rel="noopener"
+>github&lt;/a> en el directorio public y lance el comando hugo para que me genere un site con los cambios del repo privado de gitLab.&lt;/p>
+&lt;p>Una vez generado el public, le hago un push con el commit message del último commit del repo privado.
+Para que gitLab pueda conectar con github, se tiene que generar una clave privada y compartirla.&lt;/p>
+&lt;p>En el caso que vaya pusheando los cambios de los artículos en draft al repo privado, al generar el site, como no detecta cambios, no lo pushearía al repo publico.&lt;/p>
+&lt;p>Con esto ahora mi flujo de trabajo es algo más sencillo y solo manejo el repositorio privado, en el momento que hago push de artículos no draft, salta la pipeline de gitLab-CI y automáticamente se pública en el site.&lt;/p>
+&lt;p>Más o menos en un diagrama quedaría así:&lt;/p>
+&lt;p>&lt;img src="https://blog.joaquin-caro.es/p/automatizando-la-publicaci%C3%B3n-de-hugo-con-gitlab-ci/diagram.png"
+width="962"
+height="473"
+srcset="https://blog.joaquin-caro.es/p/automatizando-la-publicaci%C3%B3n-de-hugo-con-gitlab-ci/diagram_hu90efddfd1f0c26d312c32d13a2f7ed39_60329_480x0_resize_box_3.png 480w, https://blog.joaquin-caro.es/p/automatizando-la-publicaci%C3%B3n-de-hugo-con-gitlab-ci/diagram_hu90efddfd1f0c26d312c32d13a2f7ed39_60329_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="diagrama"
+class="gallery-image"
+data-flex-grow="203"
+data-flex-basis="488px"
+>&lt;/p></description></item></channel></rss>
