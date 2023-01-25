@@ -44,7 +44,7 @@ params:
 
     sidebar:
         emoji: 👨🏻‍💻
-        subtitle: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        subtitle: Mi Cuaderno de bitácora.
         avatar:
             enabled: true
             local: true
@@ -57,7 +57,6 @@ params:
 
     widgets:
         homepage:
-            - type: search
             - type: archives
               params:
                   limit: 5
